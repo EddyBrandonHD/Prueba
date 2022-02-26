@@ -1,0 +1,31 @@
+<%- include('template/cabecera', {tituloWeb: 'Pagina Animales'}) %>
+   
+<div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            <% if (arrayAnimales.length > 0) { %>
+                <% arrayAnimales.forEach(animal => { %>
+                    <tr>
+                        <th scope="row"><%= animal.id %> </th>
+                        <td><%= animal.nombre %></td>
+                        <td><%= animal.descripcion %></td>
+                        <td>Boton</td>
+                      </tr>
+                <% }) %>
+               <% } %>
+
+        </tbody>
+      </table>
+
+</div>
+
+<%- include('template/floater') %>

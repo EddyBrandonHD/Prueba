@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
 
     try {
         const arrayAnimalesDB = await Animal.find()
-        console.log(arrayAnimalesDB);
+      //  console.log(arrayAnimalesDB);
 
         res.render("animales",{
             arrayAnimales:  arrayAnimalesDB
@@ -24,5 +24,26 @@ router.get('/', async (req, res) => {
 
 
 });
+
+router.get('/crear', (req, res) => {
+res.render('crear')
+})
+
+router.post('/', async (req,res) => {
+    const body = req.body
+    console.log(body)
+
+    try {
+      //  const animalDB = new Animal(body)
+       // await animalDB.save()
+        
+       await Animal.create(body)
+       
+       res.redirect('/animales')
+    } catch (error) {
+        console.log(error)
+    }
+    
+})
 
 module.exports = router;
